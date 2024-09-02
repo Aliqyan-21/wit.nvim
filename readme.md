@@ -54,7 +54,7 @@ To perform a web search, use the `:WitSearch` command followed by your query.
 :WitSearch your search query
 ```
 
-Search with Visual Mode
+###### Search with Visual Mode
 
 Select the text you want to search and then hit `:WitVisualSearch` and enter.
 

@@ -1,6 +1,10 @@
 # wit.nvim
 
-`wit.nvim` is a plugin that allows you to perform web searches directly from within Neovim.
+###### `wit.nvim` is a plugin that allows you to perform web searches directly from within Neovim.
+
+Switch, open browser, click on search, search...aah I was tired of this, Now I can web search directly through nvim.
+
+Especially the errors I can just visual select and hit keymap and...voila done!
 
 ## Features
 

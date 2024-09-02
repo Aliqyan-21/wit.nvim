@@ -12,6 +12,10 @@ Especially the errors I can just visual select and hit keymap and...voila done!
 - **Set your preffered Search Engine**
 - **Visual Mode Search:** select text or errors to search directly
 
+## Sound On
+
+https://github.com/user-attachments/assets/7e31238e-8b1e-484c-a68b-8604d6b1d971
+
 ## Installation
 
 You can install wit.nvim using any plugin manager for example:

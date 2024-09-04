@@ -1,9 +1,18 @@
 local M = {}
 local m_config = require("wit.config")
 
+local search_engines = {
+	google = "https://www.google.com/search?q=",
+	bing = "https://www.bing.com/search?q=",
+	duckduckgo = "https://duckduckgo.com/?q=",
+	ecosia = "https://www.ecosia.org/search?q=",
+	brave = "https://search.brave.com/search?q=",
+	perplexity = "https://www.perplexity.ai/search?q=",
+}
+
 M.wit_search = function(query)
 	query = query:gsub(" ", "+")
-	local url = "https://www." .. m_config.search_engine .. ".com/search?q=" .. query
+	local url = (search_engines[m_config.search_engine] or m_config.search_engine) .. query
 	os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
 end
 

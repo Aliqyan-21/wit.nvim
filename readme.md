@@ -10,6 +10,8 @@ Especially the errors I can just visual select and hit keymap and...voila done!
 
 - **Search Web Directly**
 - **Set your preffered Search Engine**
+- **Support for Custom Search Engine URLs**
+- **Wikipedia Search Command**
 - **Visual Mode Search:** select text or errors to search directly
 
 ## Sound On
@@ -50,10 +52,14 @@ return {
 
 To perform a web search, use the `:WitSearch` command followed by your query.
 
+```
+:WitSearch your search query
+```
+
 To perform a direct wikipedia search, use the `:WitSearchWiki` command followed by your query.
 
 ```
-:WitSearch your search query
+:WitSearchWiki your search topic
 ```
 
 ###### Search with Visual Mode
@@ -65,10 +71,25 @@ Select the text you want to search and then hit `:WitVisualSearch` and enter.
 Configure `wit.nvim` by adding the setup function in your configuration file.
 
 ```lua
-require('wit').setup({
-  search_engine = 'google' -- your preferred search engine name
+require("wit").setup({
+  search_engine = "google" -- your preferred search engine name from the list
+  -- search_engine = "https://any_other_search_engine.com/search?q=" -- for any other search engine not in list you can define it's url directly
+
+  -- for example:
+  -- search_engine = "https://you.com/search?q=" -- defining the search url of you.com as it is not in the list
 })
 ```
+
+### Supported Search Engines list
+
+    - google
+    - bing
+    - duckduckgo
+    - ecosia
+    - brave
+    - perplexity
+
+###### You can also specify a custom search engine URL by providing the base URL in the search_engine configuration. Just ensure you include the ?q= at the end.
 
 ## Contributing
 

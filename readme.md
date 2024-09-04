@@ -50,6 +50,8 @@ return {
 
 To perform a web search, use the `:WitSearch` command followed by your query.
 
+To perform a direct wikipedia search, use the `:WitSearchWiki` command followed by your query.
+
 ```
 :WitSearch your search query
 ```

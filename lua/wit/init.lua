@@ -19,7 +19,7 @@ end, { range = true }) -- allowing range to handle f**ing E481
 
 vim.api.nvim_create_user_command("WitSearchWiki", function(opts)
 	local query = opts.args:gsub(" ", "_")
-	local url = "https://en.wikipedia.org/wiki/" .. query
+	local url = "https://en.wikipedia.org/w/index.php?search=" .. query
 	os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
 end, { nargs = 1 })
 

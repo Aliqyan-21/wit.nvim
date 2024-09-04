@@ -20,7 +20,7 @@ https://github.com/user-attachments/assets/7e31238e-8b1e-484c-a68b-8604d6b1d971
 
 ### AI (perplexity.ai, ...etc.)
 
-![perplexity](https://github.com/user-attachments/assets/a0ca9aa6-d587-4b03-89fe-ef1d9e802917)
+![perplexity](https://github.com/user-attachments/assets/45d96f0b-7074-40e9-a7f0-7a9ec117b724)
 
 ## Installation
 

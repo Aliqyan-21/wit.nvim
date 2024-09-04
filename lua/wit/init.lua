@@ -17,6 +17,12 @@ vim.api.nvim_create_user_command("WitSearchVisual", function()
 	M.wit_search(query)
 end, { range = true }) -- allowing range to handle f**ing E481
 
+vim.api.nvim_create_user_command("WitSearchWiki", function(opts)
+	local query = opts.args:gsub(" ", "_")
+	local url = "https://en.wikipedia.org/wiki/" .. query
+	os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
+end, { nargs = 1 })
+
 function M.setup(config)
 	m_config.setup(config)
 end

@@ -10,10 +10,26 @@ local search_engines = {
 	perplexity = "https://www.perplexity.ai/search?q=",
 }
 
+local function getOs()
+	local fh = io.popen("uname")
+	local uname = fh:read("*l")
+	fh:close()
+
+	if uname == "Darwin" then
+		return "MacOS"
+	else
+		return "Linux"
+	end
+end
+
 M.wit_search = function(query)
 	query = query:gsub(" ", "+")
 	local url = (search_engines[m_config.search_engine] or m_config.search_engine) .. query
-	os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
+	if getOs() == "Linux" then
+		os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
+	else
+		os.execute("open '" .. url .. "'")
+	end
 end
 
 vim.api.nvim_create_user_command("WitSearch", function(opts)

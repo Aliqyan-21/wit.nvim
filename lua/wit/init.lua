@@ -24,7 +24,7 @@ local function setup_commands()
 	end, { nargs = 1 })
 end
 
---- Setup function for the plugin
+--- Initialize the plugin
 --- @param opts Config
 function M.setup(opts)
 	config.setup(opts)

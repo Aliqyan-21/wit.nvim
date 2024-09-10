@@ -32,7 +32,7 @@ end
 
 M.search = function(query)
 	query = query:gsub(" ", "+")
-	local url = (search_engines[config.search_engine] or config.search_engine) .. query
+	local url = (search_engines[config.engine] or config.engine) .. query
 	if getOs() == "Linux" then
 		os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
 	else

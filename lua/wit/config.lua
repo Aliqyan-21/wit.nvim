@@ -1,5 +1,6 @@
 local M = {}
 
+--- @type wit.Config
 M.values = {
 	engine = "google",
 	command_search = "WitSearch",
@@ -8,7 +9,7 @@ M.values = {
 }
 
 --- Sets up the config
---- @param opts wit.SetupOpts?
+--- @param opts wit.SetupOpts
 function M.setup(opts)
 	if opts then
 		for k, v in pairs(opts) do

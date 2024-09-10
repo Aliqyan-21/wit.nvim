@@ -1,5 +1,6 @@
 local M = {}
-local m_config = require("wit.config")
+
+local config = require("wit.config")
 
 local search_engines = {
 	google = "https://www.google.com/search?q=",
@@ -19,18 +20,19 @@ local function getOs()
 	end
 
 	local uname = fh:read("*l")
+
 	fh:close()
 
 	if uname == "Darwin" then
 		return "MacOS"
-	else
-		return "Linux"
 	end
+
+	return "Linux"
 end
 
-M.wit_search = function(query)
+M.search = function(query)
 	query = query:gsub(" ", "+")
-	local url = (search_engines[m_config.search_engine] or m_config.search_engine) .. query
+	local url = (search_engines[config.search_engine] or config.search_engine) .. query
 	if getOs() == "Linux" then
 		os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
 	else
@@ -38,24 +40,22 @@ M.wit_search = function(query)
 	end
 end
 
-vim.api.nvim_create_user_command("WitSearch", function(opts)
-	M.wit_search(opts.args)
+vim.api.nvim_create_user_command(config.command_search or "WitSearch", function(opts)
+	M.search(opts.args)
 end, { nargs = 1 })
 
-vim.api.nvim_create_user_command("WitSearchVisual", function()
+vim.api.nvim_create_user_command(config.command_search_visual or "WitSearchVisual", function()
 	local lines = vim.fn.getline("'<", "'>")
 	local query = type(lines) == "table" and table.concat(lines, " ") or lines
-	M.wit_search(query)
+	M.search(query)
 end, { range = true }) -- allowing range to handle f**ing E481
 
-vim.api.nvim_create_user_command("WitSearchWiki", function(opts)
+vim.api.nvim_create_user_command(config.command_search_wiki or "WitSearchWiki", function(opts)
 	local query = opts.args:gsub(" ", "_")
 	local url = "https://en.wikipedia.org/w/index.php?search=" .. query
 	os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
 end, { nargs = 1 })
 
-function M.setup(config)
-	m_config.setup(config)
-end
+M.setup = config.setup
 
 return M

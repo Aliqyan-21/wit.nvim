@@ -19,7 +19,7 @@ function M.setup_commands()
 		local lines = vim.fn.getline("'<", "'>")
 		local query = type(lines) == "table" and table.concat(lines, " ") or lines
 		core.search(query)
-	end, { range = true })
+	end, { range = true }) -- allowing range to handle f**ing E481
 
 	vim.api.nvim_create_user_command(config.values.command_search_wiki, function(opts)
 		local query = opts.args:gsub(" ", "_")

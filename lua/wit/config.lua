@@ -7,7 +7,7 @@ local M = {}
 
 --- The default config
 --- @type Config
-M.config = {
+M.values = {
 	engine = "google",
 	command_search = "WitSearch",
 	command_search_visual = "WitSearchVisual",
@@ -22,8 +22,8 @@ function M.setup(config)
 	end
 
 	for key, value in pairs(config) do
-		if M.config[key] ~= nil then
-			M.config[key] = value
+		if M.values[key] ~= nil then
+			M.values[key] = value
 		end
 	end
 end

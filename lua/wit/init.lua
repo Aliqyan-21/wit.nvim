@@ -56,6 +56,10 @@ vim.api.nvim_create_user_command(config.command_search_wiki or "WitSearchWiki", 
 	os.execute("xdg-open '" .. url .. "' > /dev/null 2>&1 &")
 end, { nargs = 1 })
 
-M.setup = config.setup
+--- Expose the setup function
+--- @param user_config Config? Optional configuration table
+M.setup = function(user_config)
+	config.setup(user_config)
+end
 
 return M

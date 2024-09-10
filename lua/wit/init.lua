@@ -4,7 +4,7 @@ local config = require("wit.config")
 local core = require("wit.core")
 
 --- Setup function for the plugin
---- @param opts wit.SetupOpts
+--- @param opts Config
 function M.setup(opts)
 	config.setup(opts)
 	M.setup_commands()

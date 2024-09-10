@@ -3,7 +3,8 @@ local M = {}
 local utils = require("wit.utils")
 local config = require("wit.config")
 
-local search_engines = {
+--- @type table<string, string>
+M.search_engines = {
     google = "https://www.google.com/search?q=",
     bing = "https://www.bing.com/search?q=",
     duckduckgo = "https://duckduckgo.com/?q=",
@@ -16,7 +17,7 @@ local search_engines = {
 --- @param query string The search query to be executed
 function M.search(query)
     query = query:gsub(" ", "+")
-    local url = (search_engines[config.values.engine] or config.values.engine) .. query
+    local url = (M.search_engines[config.values.engine] or config.values.engine) .. query
     M.open_url(url)
 end
 

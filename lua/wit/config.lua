@@ -1,12 +1,5 @@
---- @class Config
---- @field engine string The search engine to use (default: "google")
---- @field command_search string The command for search (default: "WitSearch")
---- @field command_search_visual string The command for visual search (default: "WitSearchVisual")
---- @field command_search_wiki string The command for wiki search (default: "WitSearchWiki")
 local M = {}
 
---- The default config
---- @type Config
 M.values = {
 	engine = "google",
 	command_search = "WitSearch",
@@ -15,15 +8,13 @@ M.values = {
 }
 
 --- Sets up the config
---- @param config Config? Optional config table to override defaults.
-function M.setup(config)
-	if not config then
-		return
-	end
-
-	for key, value in pairs(config) do
-		if M.values[key] ~= nil then
-			M.values[key] = value
+--- @param opts wit.SetupOpts?
+function M.setup(opts)
+	if opts then
+		for k, v in pairs(opts) do
+			if M.values[k] ~= nil then
+				M.values[k] = v
+			end
 		end
 	end
 end

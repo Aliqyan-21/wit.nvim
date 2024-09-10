@@ -1,5 +1,3 @@
-local core = require("wit.core")
-
 --- @alias SearchEngine
 --- | "google"
 --- | "bing"

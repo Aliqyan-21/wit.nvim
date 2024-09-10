@@ -1,13 +1,13 @@
 local M = {}
 
 --- Get the current OS
---- @return string
-function M.getOs()
+--- @return string|nil
+function M.get_os()
 	local fh = io.popen("uname")
 
 	if not fh then
 		vim.notify("wit.nvim: uname command not found", vim.log.levels.ERROR)
-		return
+		return nil
 	end
 
 	local uname = fh:read("*l")

@@ -1,10 +1,22 @@
 local M = {}
 
-M.search_engine = "google"
+--- @type Config
+M.values = {
+	engine = "google",
+	command_search = "WitSearch",
+	command_search_visual = "WitSearchVisual",
+	command_search_wiki = "WitSearchWiki",
+}
 
-function M.setup(config)
-	if config and config.search_engine then
-		M.search_engine = config.search_engine
+--- Sets up the config
+--- @param opts Config
+function M.setup(opts)
+	if opts then
+		for k, v in pairs(opts) do
+			if M.values[k] ~= nil then
+				M.values[k] = v
+			end
+		end
 	end
 end
 

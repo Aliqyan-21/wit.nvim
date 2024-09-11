@@ -76,22 +76,20 @@ Configure `wit.nvim` by adding the setup function in your configuration file.
 
 ```lua
 require("wit").setup({
-  engine = "google" -- your preferred search engine name from the list
-  -- engine = "https://any_other_search_engine.com/search?q=" -- for any other search engine not in list you can define it's url directly
+  -- You can choose your preferred search engine from
+  -- the supported list: {google, bing, duckduckgo, ecosia, brave, perplexity}.
+  --
+  -- There's also the possibility of just specifying a custom
+  -- search engine URL by providing the base URL and the required search params.
+  -- EXAMPLE:
+  -- engine = "https://<your_preferred_search_engine>/search?q="
+  engine = "google", -- search engine (default: "google")
 
-  -- for example:
-  -- engine = "https://you.com/search?q=" -- defining the search url of you.com as it is not in the list
+  command_search = "WitSearch", -- custom command to search (default: "WitSearch")
+  command_search_visual = "WitSearchVisual", -- custom command to search visually (default: "WitSearchVisual")
+  command_search_wiki = "WitSearchWiki", -- custom command to search wikipedia (default: "WitSearchWiki")
 })
 ```
-
-### Supported Search Engines list
-
-    - google
-    - bing
-    - duckduckgo
-    - ecosia
-    - brave
-    - perplexity
 
 ###### You can also specify a custom search engine URL by providing the base URL in the search_engine configuration. Just ensure you include the ?q= at the end.
 

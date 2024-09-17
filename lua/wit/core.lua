@@ -15,7 +15,7 @@ M.search_engines = {
 --- Performs a web search using the configured search engine
 --- @param query string The search query to be executed
 function M.search(query)
-	query = query:gsub(" ", "+")
+	query = query:gsub("%s+", ""):gsub(" ", "+")
 	local url = (M.search_engines[config.values.engine] or config.values.engine) .. query
 	M.open_url(url)
 end
@@ -28,7 +28,7 @@ function M.open_url(url)
 	local is_linux = not is_windows and not is_macos
 
 	if is_windows then
-		vim.notify("Windows is not supported yet", vim.log.levels.ERROR)
+		os.execute('powershell -NoLogo -NoProfile -NonInteractive -Command Start-Process "' .. url .. '"')
 	elseif is_macos then
 		os.execute('open "' .. url .. '"')
 	elseif is_linux then

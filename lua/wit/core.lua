@@ -1,6 +1,7 @@
 local M = {}
 
 local config = require("wit.config")
+local utils = require("wit.utils")
 
 --- @type table<SearchEngine, string>
 M.search_engines = {
@@ -15,7 +16,7 @@ M.search_engines = {
 --- Performs a web search using the configured search engine
 --- @param query string The search query to be executed
 function M.search(query)
-	query = query:gsub("%s+", ""):gsub(" ", "+")
+	query = utils.normalize_for_url(query)
 	local url = (M.search_engines[config.values.engine] or config.values.engine) .. query
 	M.open_url(url)
 end

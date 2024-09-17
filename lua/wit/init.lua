@@ -2,6 +2,7 @@ local M = {}
 
 local config = require("wit.config")
 local core = require("wit.core")
+local utils = require("wit.utils")
 
 local function setup_commands()
 	vim.api.nvim_create_user_command(config.values.command_search, function(opts)
@@ -9,8 +10,8 @@ local function setup_commands()
 	end, { nargs = 1 })
 
 	vim.api.nvim_create_user_command(config.values.command_search_visual, function()
-		local lines = vim.fn.getline("'<", "'>")
-		local query = type(lines) == "table" and table.concat(lines, " ") or lines
+		local lines = utils.get_visual_selection()
+		local query = table.concat(lines, " ")
 
 		---@diagnostic disable-next-line
 		core.search(query)
